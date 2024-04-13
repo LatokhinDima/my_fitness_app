@@ -1,9 +1,38 @@
+{% extends 'fitness/base.html' %}
+
+{% block title %}  {% endblock %}
 
 {% block body %}
-    <style> title {color: #00FF00;} </style>
-    <title>{{ title }}</title>
-    <style> p {font-size: 70px; color: #0000FF; text-align: center;} </style>
-    <p>{{ content }}</p>
+    <style> h1 {color: #00FF00;} </style>
+    <h1>Спортивные объекты</h1>
+    {% for category in page_obj %}
+        {{ category.full_name|upper }}<br>
+        <h2><a >{{ category.name }}</a></h2>
+        <ul>
+            {% for service in category.services.all|dictsort:'name' %}
+                <li><a >{{ service.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
 
+
+    <div class="pagination" style="color: #FF4500;">
+        <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+        </span>
+    </div>
+</div>
 
 {% endblock %}

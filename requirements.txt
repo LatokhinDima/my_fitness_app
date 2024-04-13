@@ -5,3 +5,4 @@ setuptools==59.6.0
 sqlparse==0.4.4
 typing_extensions==4.11.0
 psycopg2-binary==2.9.9
+pillow==10.3.0
