@@ -7,12 +7,11 @@
     <h1>Спортивные объекты</h1>
     {% for category in page_obj %}
         {{ category.full_name|upper }}<br>
-        <h2><a >{{ category.name }}</a></h2>
-        <ul>
-            {% for service in category.services.all|dictsort:'name' %}
-                <li><a >{{ service.name }}</a></li>
-            {% endfor %}
-        </ul>
+        <h2><a >{{ category.name }} <img src="{{ category.picture.url }}" width="200 height="300" alt="Sports Facility Image"> </a></h2>
+        <h5><a >{{ category.description }} </a></h5>
+        <h7><a >{{ category.address }} </a></h7>
+
+
     {% endfor %}
 
 

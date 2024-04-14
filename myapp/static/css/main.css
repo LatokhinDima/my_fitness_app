@@ -44,3 +44,8 @@ a:hover {
 .top-menu li a:hover::after {
     transform: scale(1);
 }
+
+.columns-2 {
+  column-count: 2;
+  column-width: 250px;
+}

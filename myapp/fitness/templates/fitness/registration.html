@@ -1,0 +1,16 @@
+{% extends 'fitness/base.html' %}
+
+{% block title %} Registration {% endblock %}
+
+
+{% block body %}
+<style> h1 {color: #00FF00;} </style>
+ <h1>Registration</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Register</button>
+  </form>
+{% endblock %}
+
+

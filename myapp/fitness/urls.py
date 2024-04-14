@@ -5,6 +5,9 @@ app_name = 'fitness'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('signup/', views.signup, name='signup'),
+    path('signup/page/', views.index, name='index'),
+    path('page/', views.index, name='index'),
 #    path('product/<int:product_id>/', views.detail, name='detail'),
 #    path('category/<int:category_id>/', views.category, name='category'),
 #    path('page/', views.index, name='index'),
@@ -18,3 +21,4 @@ urlpatterns = [
 
 
 ]
+
