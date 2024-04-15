@@ -1,22 +1,22 @@
 {% extends 'fitness/base.html' %}
 
-{% block title %}  {% endblock %}
+{% block title %} Home {% endblock %}
 
 {% block body %}
 <div class="row">
     <div class="col-lg-2 col-md-2"><style> h2 {color: #2d4c69;} </style>
-    <h2>Виды спорта</h2>
+    <h2 align="center" style="color:#33cc33">Виды спорта</h2>
     {% for obj in sport_category %}
         {{ obj.full_name|upper }}<br>
-    <h5><a >{{ obj.name }}</a></h5>
+    <h5><a href="{% url 'fitness:category' obj.id %}">{{ obj.name }}</a></h5>
     <hr>
     {% endfor %}
     </div>
-    <div class="col-lg-10 col-md-10"><style> h1 {color: #2d4c69;} </style>
-    <h1>Спортивные объекты</h1>
+    <div class="col-lg-5 col-md-5"><style> h1 {color: #2d4c69;} </style>
+    <h2 align="center" style="color:#33cc33">Спортивные объекты</h2>
     {% for category in page_obj %}
         {{ category.full_name|upper }}<br>
-        <h2><a >{{ category.name }} <img src="{{ category.picture.url }}" width="200 height="300" alt="Sports Facility Image"> </a></h2>
+        <h2><a >{{ category.name }} <img src="{{ category.picture.url }}" width="200" height="300" alt="Sports Facility Image"> </a></h2>
         <hr>
         <h5><a >{{ category.description }} </a></h5>
         <hr>
@@ -27,7 +27,7 @@
     {% endfor %}
 
 
-    <div class="pagination" style="color: #FF4500;">
+    <div class="pagination" style="color: #33cc33;">
         <span class="step-links">
         {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; first</a>
@@ -45,6 +45,9 @@
         </span>
     </div>
 </div>
+    <div class="col-lg-5 col-md-5"><style> h1 {color: #2d4c69;} </style>
+    <h2 align="center" style="color:#33cc33">Локации объектов</h2>
+
 
 </div>
 

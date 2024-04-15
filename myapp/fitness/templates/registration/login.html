@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
-</head>
-<body>
+{% extends 'fitness/base.html' %}
 
-{% if form.errors %}
+{% block title %} Login {% endblock %}
+
+{% block body %}
+<style> h1 {color: #33cc33;} </style>
+ <h1>Login</h1>
+<hr>
+<h3 align="center" style="color:#33cc33">{% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
-{% endif %}
+{% endif %}</h3>
 
-<form method="post" action="{% url 'login' %}">
+<h2 align="center" style="color:#33cc33"><form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Login">
     <input type="hidden" name="next" value="{{ next }}">
-</form>
-
-</body>
-</html>
+</form></h2>
+{% endblock %}

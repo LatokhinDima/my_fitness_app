@@ -4,8 +4,9 @@
 
 
 {% block body %}
-<style> h1 {color: #00FF00;} </style>
+<style> h1 {color: #33cc33;} </style>
  <h1>Registration</h1>
+<hr>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
