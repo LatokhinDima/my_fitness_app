@@ -16,7 +16,7 @@
     <h2 align="center" style="color:#33cc33">Спортивные объекты</h2>
     {% for category in page_obj %}
         {{ category.full_name|upper }}<br>
-        <h2><a >{{ category.name }} <img src="{{ category.picture.url }}" width="200" height="300" alt="Sports Facility Image"> </a></h2>
+        <h2><a href="{% url 'fitness:get_services' category.id %}">{{ category.name }} &nbsp <img src="{{ category.picture.url }}" width="200" height="300" alt="Sports Facility Image"> </a></h2>
         <hr>
         <h5><a >{{ category.description }} </a></h5>
         <hr>

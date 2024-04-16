@@ -1,0 +1,12 @@
+{% extends 'fitness/base.html' %}
+
+{% block title %} Service {% endblock %}
+
+
+{% block body %}
+    <h1>{{ service.name }}</h1>
+    <h6> В центре: {{ service.facility.name }}</h6>
+    <p>Description: {{ service.description }}</p>
+    <p>Price: {{ service.price }} $</p>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'fitness/base.html' %}
+
+{% block title %} Services {% endblock %}
+
+
+
+
+{% block body %}
+
+    <h1 align="center" style="color:#33cc33"> {{ facility.name }}</h1>
+    <h2 align="left" style="color:#33cc33">Абонементы:</h2> <br>
+    <ul>
+        {% for service in services|dictsort:'name' %}
+            <h4><a href="{% url 'fitness:detail' service.id %}" align="left" style="color:#2d4c69"> {{ service.name }}: </a></h4>
+            <hr>
+            <h5 align="center">{{ service.description }} </h5>
+            <h5 align="left" style="color:#ff0000"> Стоимость: {{ service.price }} рублей </h5>
+        <hr>
+        <hr>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

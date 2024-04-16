@@ -28,6 +28,20 @@ def category(request, category_id):
     return render(request, 'fitness/category.html', context)
 
 
+def get_services(request, facility_id):
+    facility = get_object_or_404(SportsFacility, id=facility_id)
+    services = Service.objects.filter(facility=facility_id)
+    context = {
+        'services': services,
+        'facility': facility
+    }
+    return render(request, 'fitness/get_services.html', context)
+
+def detail(request, service_id):
+    service = get_object_or_404(Service, id=service_id)
+    return render(request, 'fitness/detail.html', {'service': service})
+
+
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
