@@ -5,12 +5,12 @@
 
 {% block body %}
 <style> h1 {color: #33cc33;} </style>
- <h1>Registration</h1>
+ <h1>Регистрация</h1>
 <hr>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Register</button>
+    <button type="submit">Зарегистрироваться</button>
   </form>
 {% endblock %}
 

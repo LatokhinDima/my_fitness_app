@@ -2,11 +2,35 @@
 
 {% block title %} Service {% endblock %}
 
+{% block breadcrumbs %}
+
+<li class="breadcrumb" style="margin-right: 30px;"><a href="{% url 'shop:category' service.facility.id %}">{{
+    service.facility.name }}</a></li>
+<li class="breadcrumb" style="margin-right: 30px;"><a href="{{ request.path }}">{{ service.name }}</a></li>
+{% endblock %}
+
 
 {% block body %}
-    <h1>{{ service.name }}</h1>
-    <h6> В центре: {{ service.facility.name }}</h6>
-    <p>Description: {{ service.description }}</p>
-    <p>Price: {{ service.price }} $</p>
+<h1>{{ service.name }}</h1>
+<p><a href="{% url 'fitness:category' service.facility.id %}">{{ service.facility.name }}</a></p>
+<p>Описание: {{ service.description }}</p>
+<p>Цена: {{ service.price }} руб.</p>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="start_date">Выберите дату:</label>
+    <input type="date" id="start_date" name="start_date">
+    <button type="submit">Выбрать дату</button>
+</form>
+
+{% if user.is_authenticated %}
+<form action="{% url 'fitness:add_to_cart' service.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger" value="Добавить в корзину"/>
+    <i class="fa-solid fa-cart-plus fa-2xl"></i>
+</form>
+{% else %}
+<input type="submit" class="btn btn-danger" value="Для добавления услуг-зарегистрируйтесь"/>
+{% endif %}
 
 {% endblock %}

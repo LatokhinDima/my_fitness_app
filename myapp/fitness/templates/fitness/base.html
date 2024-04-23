@@ -25,10 +25,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0 top-menu">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'fitness:index' %}"><i class="fa-solid fa-house-chimney"></i> Home</a>
+          <a class="nav-link active" aria-current="page" href="{% url 'fitness:index' %}"><i class="fa-solid fa-house-chimney"></i> Домашняя страница</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'fitness:signup' %}"><i class="fa-solid fa-user"></i> Registration</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'fitness:signup' %}"><i class="fa-solid fa-user-plus"></i></i> Регистрация</a>
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'fitness:my_shopping_cart' %}"><i class="fa-solid fa-cart-shopping"></i> Корзина</a>
+            </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'fitness:profile_history_of_orders' %}"><i class="fa-solid fa-file-lines"></i></i> Мои абонементы</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+            <a class="visually-hidden"</a>
+            </li>
+        {% endif %}
          </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 top-menu">
         <li class="nav-item">
@@ -40,10 +52,10 @@
     {% if user.is_authenticated %}
         <form action="{% url 'logout' %}?next={{ request.path }}" method="post">
             {% csrf_token %}
-            <input type="submit" value="Logout" class="btn btn-danger"/>
+            <input type="submit" value="Выйти" class="btn btn-danger"/>
         </form>
     {% else %}
-        <a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-danger" >Login</a>
+        <a href="{% url 'login' %}?next={{ request.path }}" class="btn btn-danger" >Войти</a>
     {% endif %}
 </nav>
 

@@ -1,0 +1,18 @@
+{% extends 'fitness/base.html' %}
+
+{% block title %} Make order {% endblock %}
+
+{% block body %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <style> h1 {color: #00FF00; text-align: center;} </style>
+    <h1>Поздравляем! Ваш заказ успешно оформлен!</h1>
+    <script>
+        setTimeout(function() {
+            window.location.href = "/";
+        }, 3000);
+    </script>
+{% endblock %}

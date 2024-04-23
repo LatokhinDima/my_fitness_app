@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import SportsCategory, SportsFacility, Service
+from .models import SportsCategory, SportsFacility, Service, Order, OrderEntry, Profile
 from django.contrib.auth.models import User
-from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 
 class ServiceInline(admin.TabularInline):
@@ -41,3 +41,36 @@ class ServiceAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Service, ServiceAdmin)
+
+class OrderInline(admin.TabularInline):
+    model = Order
+    extra = 0
+
+class ProfileAdmin(admin.ModelAdmin):
+    inlines = [OrderInline]
+
+
+
+class OrderEntryInline(admin.TabularInline):
+    model = OrderEntry
+    extra = 0
+
+
+class OrderAdmin(admin.ModelAdmin):
+    inlines = [OrderEntryInline]
+
+class OrderEntryAdmin(admin.ModelAdmin):
+    pass
+
+class ProfileInline(admin.StackedInline):
+    model = Profile
+    can_delete = False
+
+class UserAdmin(BaseUserAdmin):
+    inlines = [ProfileInline]
+
+admin.site.register(Profile, ProfileAdmin)
+admin.site.register(OrderEntry, OrderEntryAdmin)
+admin.site.register(Order, OrderAdmin)
+admin.site.unregister(User)
+admin.site.register(User, UserAdmin)

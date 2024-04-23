@@ -1,0 +1,25 @@
+{% extends 'fitness/base.html' %}
+
+{% block title %} History of orders {% endblock %}
+
+
+{% block body %}
+    <h3>Заказы:</h3>
+    <br>
+    <table class="table" align="left" bgcolor="DFF5D8">
+        <thead>
+        <tr>
+            <th scope="col">Номер заказа</th>
+            <th scope="col">Статус заказа</th>
+            <th scope="col">Сумма</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+        <tr>
+                <td> <li><a href="{% url 'fitness:order_details' order.id %}"> {{ order.id }} Подробнее о заказе</a></li></td>
+                <td> {{ order.get_order_status }} </td>
+                <td> {{ order.get_total_price }} </td>
+        </tr>
+        {% endfor %}
+ {% endblock %}
